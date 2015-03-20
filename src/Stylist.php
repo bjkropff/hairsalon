@@ -6,7 +6,7 @@
     class Stylist
     {
         private $employee;
-    //    private $id
+        private $id;
 
         function __construct($employee, $id)
         {
