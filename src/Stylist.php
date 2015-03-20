@@ -37,7 +37,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec('INSERT INTO stylist (employee) VALUES ("{$this->getEmployee()}") RETURNING id;')
+            $statement = $GLOBALS['DB']->query("INSERT INTO stylists (employee) VALUES ('{$this->getEmployee()}') RETURNING id;");
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             $this->setId($result['id']);
         }
@@ -49,7 +49,7 @@
             foreach($returned_stylists as $one_stylist){
                 $employee = $one_stylist['employee'];
                 $id = $one_stylist['id'];
-                $new_stylist = new Stylist($emplyee, $id);
+                $new_stylist = new Stylist($employee, $id);
                 array_push($stylists, $new_stylist);
             }
             return $stylists;
@@ -71,7 +71,7 @@
         //         }
         //     }
         //     return $found_stylist;
-        //}
+        // }
     }//closes the Stylist class
 
 ?>

@@ -48,7 +48,7 @@
         {
             //Arrange
             $employee = "Bob";
-            $id = 1;
+            $id = null;
             $test_get_employee = new Stylist($employee, $id);
 
             //Act
@@ -58,7 +58,7 @@
             $result = Stylist::getAll();
             $this->assertEquals($test_get_employee, $result[0]);
         }
-        //
+
         // function test_deleteAll()
         // {
         //     //Arrange
