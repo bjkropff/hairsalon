@@ -17,20 +17,20 @@
             Stylist::deleteAll();
         }
 
-        // function test_getEmployee()
-        // {
-        //     //Arrange
-        //     $employee = "Bob";
-        //     $id = 1;
-        //     $test_get_employee = new Stylist($employee, $id);
-        //
-        //     //Act
-        //     $result = $test_get_employee->getEmployee();
-        //
-        //     //Assert
-        //     $this->assertEquals($test_get_employee, $result);
-        //
-        // }
+        function test_getEmployee()
+        {
+            //Arrange
+            $employee = "Bob";
+            $id = 1;
+            $test_get_employee = new Stylist($employee, $id);
+
+            //Act
+            $result = $test_get_employee->getEmployee();
+
+            //Assert
+            $this->assertEquals($employee, $result);
+
+        }
 
         function test_getId()
         {
@@ -44,29 +44,31 @@
             $this->assertEquals(1, $result);
         }
 
+        function test_save()
+        {
+            //Arrange
+            $employee = "Bob";
+            $id = 1;
+            $test_get_employee = new Stylist($employee, $id);
 
-        // function test_save()
-        // {
-        //     //Arrange
-        //     $employee = "Bob";
-        //     $test_get_employee = new Stylist($employee);
-        //
-        //     //Act
-        //     $test_get_employee->save();
-        //
-        //     //Assert
-        //     $result = Stylist::getAll();
-        //     $this->assertEquals($test_get_employee, $result);
-        // }
+            //Act
+            $test_get_employee->save();
+
+            //Assert
+            $result = Stylist::getAll();
+            $this->assertEquals($test_get_employee, $result[0]);
+        }
         //
         // function test_deleteAll()
         // {
         //     //Arrange
         //     $employee = "Bob";
+        //     $id = 1;
         //     $employee2 = "Sally";
-        //     $test_Stylist = new Stylist($employee);
+        //     $id = 2;
+        //     $test_Stylist = new Stylist($employee, $id);
         //     $test_Stylist->save();
-        //     $test_Stylist2 = new Stylist($employee2);
+        //     $test_Stylist2 = new Stylist($employee2, $id);
         //     $test_Stylist2->save();
         //
         //     //Act

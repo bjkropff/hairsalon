@@ -14,12 +14,12 @@
             $this->id = $id;
         }
 
-        function getName()
+        function getEmployee()
         {
             return $this->employee;
         }
 
-        function setName($new_employee)
+        function setEmployee($new_employee)
         {
             $this->employee = (string) $new_employee;
         }
@@ -37,21 +37,24 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec('INSERT INTO stylist (name) VALUES ("{$this->getEmployee()}")');
+            $GLOBALS['DB']->exec('INSERT INTO stylist (employee) VALUES ("{$this->getEmployee()}") RETURNING id;')
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $this->setId($result['id']);
         }
 
-        // static function getAll()
-        // {
-        //     $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
-        //     $stylists = array();
-        //     foreach($returned_stylist as $one_stylist){
-        //         $employee = $one_stylist['employee'];
-        //         $new_stylist = new Stylist($emplyee);
-        //         array_push($stylists, $new_stylist);
-        //     }
-        //     return $stylists;
-        // }
-        //
+        static function getAll()
+        {
+            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
+            $stylists = array();
+            foreach($returned_stylists as $one_stylist){
+                $employee = $one_stylist['employee'];
+                $id = $one_stylist['id'];
+                $new_stylist = new Stylist($emplyee, $id);
+                array_push($stylists, $new_stylist);
+            }
+            return $stylists;
+        }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec('DELETE FROM stylists *;');
@@ -60,15 +63,15 @@
         // static function find($search_id)
         // {
         //     $found_stylist = null
-        //     $stylists = Stylist::getAll();
-        //     foreach($stylists as $person) {
+        //     $all_stylists = Stylist::getAll();
+        //     foreach($all_stylists as $person) {
         //         $stylist_id = $person->getId();
         //         if($stylist_id == $search_id) {
         //             $found_stylist = $person;
         //         }
         //     }
         //     return $found_stylist;
-        // }
+        //}
     }//closes the Stylist class
 
 ?>
