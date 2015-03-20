@@ -17,51 +17,65 @@
             Stylist::deleteAll();
         }
 
-        function test_get()
+        // function test_getEmployee()
+        // {
+        //     //Arrange
+        //     $employee = "Bob";
+        //     $id = 1;
+        //     $test_get_employee = new Stylist($employee, $id);
+        //
+        //     //Act
+        //     $result = $test_get_employee->getEmployee();
+        //
+        //     //Assert
+        //     $this->assertEquals($test_get_employee, $result);
+        //
+        // }
+
+        function test_getId()
         {
             //Arrange
-            $name = "Bob";
-            $test_get_name = new Stylist($name);
-
+            $employee = "Bob";
+            $id = 1;
+            $test_get_employee = new Stylist($employee, $id);
             //Act
-            $result = $test_get_name->getName();
-
+            $result = $test_get_employee->getId();
             //Assert
-            $this->assertEquals($test_get_name, $result);
-
+            $this->assertEquals(1, $result);
         }
 
-        function test_save()
-        {
-            //Arrange
-            $name = "Bob";
-            $test_get_name = new Stylist($name);
 
-            //Act
-            $test_get_name->save();
-
-            //Assert
-            $result = Stylist::getAll();
-            $this->assertEquals($test_get_name, $result);
-        }
-
-        function test_deleteAll()
-        {
-            //Arrange
-            $name = "Bob";
-            $name = "Sally";
-            $test_Stylist = new Stylist($name);
-            $test_Stylist->save();
-            $test_Stylist2 = new Stylist($name2);
-            $test_Stylist2->save();
-
-            //Act
-            Stylist::deleteAll();
-
-            //Assert
-            $result = Stylist::getAll();
-            $this->assertEquals([], $result);
-        }
+        // function test_save()
+        // {
+        //     //Arrange
+        //     $employee = "Bob";
+        //     $test_get_employee = new Stylist($employee);
+        //
+        //     //Act
+        //     $test_get_employee->save();
+        //
+        //     //Assert
+        //     $result = Stylist::getAll();
+        //     $this->assertEquals($test_get_employee, $result);
+        // }
+        //
+        // function test_deleteAll()
+        // {
+        //     //Arrange
+        //     $employee = "Bob";
+        //     $employee2 = "Sally";
+        //     $test_Stylist = new Stylist($employee);
+        //     $test_Stylist->save();
+        //     $test_Stylist2 = new Stylist($employee2);
+        //     $test_Stylist2->save();
+        //
+        //     //Act
+        //     Stylist::deleteAll();
+        //
+        //     //Assert
+        //     $result = Stylist::getAll();
+        //     $this->assertEquals([], $result);
+        // }
 
 
     }//closes the StylistTest
