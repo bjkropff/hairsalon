@@ -48,36 +48,75 @@
         {
             //Arrange
             $employee = "Bob";
-            $id = null;
+            $id = 1;
             $test_get_employee = new Stylist($employee, $id);
-
-            //Act
             $test_get_employee->save();
 
-            //Assert
+            //Act
             $result = Stylist::getAll();
+
+            //Assert
             $this->assertEquals($test_get_employee, $result[0]);
         }
 
-        // function test_deleteAll()
-        // {
-        //     //Arrange
-        //     $employee = "Bob";
-        //     $id = 1;
-        //     $employee2 = "Sally";
-        //     $id = 2;
-        //     $test_Stylist = new Stylist($employee, $id);
-        //     $test_Stylist->save();
-        //     $test_Stylist2 = new Stylist($employee2, $id);
-        //     $test_Stylist2->save();
-        //
-        //     //Act
-        //     Stylist::deleteAll();
-        //
-        //     //Assert
-        //     $result = Stylist::getAll();
-        //     $this->assertEquals([], $result);
-        // }
+        function test_getAll()
+        {
+            //Arrange
+            $employee = "Billy";
+            $id = 1;
+            $employee2 = "Bob";
+            $id2 = 2;
+            $test_get_employee = new Stylist($employee, $id);
+            $test_get_employee->save();
+            $test_get_employee2 = new Stylist($employee2, $id2);
+            $test_get_employee2->save();
+
+            //Act
+            $result = Stylist::getAll();
+
+            //Assert
+            $this->assertEquals([$test_get_employee, $test_get_employee2], $result);
+
+        }
+
+        function test_deleteAll()
+        {
+            //Arrange
+            $employee = "Bob";
+            $id = 1;
+            $employee2 = "Sally";
+            $id = 2;
+            $test_stylist = new Stylist($employee, $id);
+            $test_stylist->save();
+            $test_stylist2 = new Stylist($employee2, $id);
+            $test_stylist2->save();
+
+            //Act
+            Stylist::deleteAll();
+
+            //Assert
+            $result = Stylist::getAll();
+            $this->assertEquals([], $result);
+        }
+
+        function test_findStylist()
+        {
+            //Arrange
+            $employee = "Bob";
+            $id = 1;
+            $employee2 = "Sally";
+            $id = 2;
+            $test_stylist = new Stylist($employee, $id);
+            $test_stylist->save();
+            $test_stylist2 = new Stylist($employee2, $id);
+            $test_stylist2->save();
+
+            //Act
+            $result = Stylist::findStylist($test_stylist->getId());
+
+            //Assert
+            $this->assertEquals($test_stylist, $result);
+        }
 
 
     }//closes the StylistTest

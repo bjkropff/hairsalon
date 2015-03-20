@@ -60,18 +60,18 @@
             $GLOBALS['DB']->exec('DELETE FROM stylists *;');
         }
 
-        // static function find($search_id)
-        // {
-        //     $found_stylist = null
-        //     $all_stylists = Stylist::getAll();
-        //     foreach($all_stylists as $person) {
-        //         $stylist_id = $person->getId();
-        //         if($stylist_id == $search_id) {
-        //             $found_stylist = $person;
-        //         }
-        //     }
-        //     return $found_stylist;
-        // }
+        static function findStylist($search_id)
+        {
+            $found_stylist = null;
+            $all_stylists = Stylist::getAll();
+            foreach($all_stylists as $person) {
+                $stylist_id = $person->getId();
+                if($stylist_id == $search_id) {
+                    $found_stylist = $person;
+                }
+            }
+            return $found_stylist;
+        }
     }//closes the Stylist class
 
 ?>
