@@ -2,16 +2,16 @@
 Brian Kropff - March 20, 2015
 
 Description
-This is an app for a hair salon. The onwer of the salon should be able to add a list of their stylists, and for each stylist, add clients who see that styists. The stylists work independently, so each client only belongs to a single stylist.
+This is an app for a hair salon. The onwer of the salon should be able to add a list of their stylists, and for each stylist, add clients who see that stylists. The stylists work independently, so each client only belongs to a single stylist.
 
 Use and Editing-
 For psql:
 1)Open up your terminal and enter: postgres
 2)In a new tab, type: psql
-A)CREATE DATABASE hair_salon;
-B)\c
-C)CREATE TABLE
-D)CREATE TABLE hair_salon_test WITH TEMPLATE hair_salon;
+3)Type: CREATE DATABASE hair_salon_test;
+A)Type: \i hair_salon_test.sql
+
+
 
 
 
