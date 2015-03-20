@@ -26,17 +26,22 @@
             $GLOBALS['DB']->exec('INSERT INTO stylist (name) VALUES ("{$this->getName()}")');
         }
 
-        // static function getAll()
-        // {
-        //     $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
-        //     $stylists = array();
-        //     foreach($returned_stylist as $one_stylist){
-        //         $name = $one_stylist['name'];
-        //         $new_stylist = new Stylist($name);
-        //         array_push($stylists, $new_stylist);
-        //     }
-        //     return $stylists;
-        //}
-    }
+        static function getAll()
+        {
+            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
+            $stylists = array();
+            foreach($returned_stylist as $one_stylist){
+                $name = $one_stylist['name'];
+                $new_stylist = new Stylist($name);
+                array_push($stylists, $new_stylist);
+            }
+            return $stylists;
+        }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec('DELETE FROM stylists *;');
+        }
+    }//closes the Stylist class
 
 ?>
