@@ -118,17 +118,17 @@
             $this->assertEquals($test_stylist, $result);
         }
 
-        // function test_getClient()
-        // {
-        //     //Arrange
-        //     $employee = "Bob";
-        //     $id = 1;
-        //     $test_stylist = new Stylist($employee, $id);
-        //     $test_stylist->save();
-        //
-        //     $test_employee_id = $test_employee->getId();
-        //
-        // }
+        function test_getClient()
+        {
+            //Arrange
+            $employee = "Bob";
+            $id = 1;
+            $test_stylist = new Stylist($employee, $id);
+            $test_stylist->save();
+
+            $test_employee_id = $test_stylist->getId();
+
+        }
     }//closes the StylistTest
 
 ?>

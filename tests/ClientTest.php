@@ -21,8 +21,11 @@
         {
             //Arrange
             $name = "Jimmy";
+            $employee = "Phil";
             $id = 1;
-            $test_client = new Client($name, $id);
+            $stylist_id = 1;
+            $test_client = new Client($name, $id, $stylist_id);
+            $test_client->save();
 
             //Act
             $result = $test_client->getName();
@@ -34,23 +37,35 @@
         function test_getId()
         {
             //Arrange
-            $name = "Jimmy";
+            $employee = "Phil";
             $id = 1;
-            $test_client = new Client($name, $id);
+            $test_get_employee = new Stylist($employee, $id);
+            $test_get_employee->save();
+
+            $name = "Jimmy";
+            $stylist_id = $test_get_employee->getId();
+            $test_client = new Client($name, $id, $stylist_id);
+            $test_client->save();
+
 
             //Act
             $result = $test_client->getId();
 
             //Assert
-            $this->assertEquals($id, $result);
+            $this->assertEquals(true, is_numeric($result));
         }
 
         function test_saveId()
         {
             //Arrange
-            $name = "Tommy";
+            $employee = "Phil";
             $id = 1;
-            $test_client = new Client($name, $id);
+            $test_get_employee = new Stylist($employee, $id);
+            $test_get_employee->save();
+
+            $name = "Jimmy";
+            $stylist_id = $test_get_employee->getId();
+            $test_client = new Client($name, $id, $stylist_id);
             $test_client->save();
 
             //Act
@@ -63,13 +78,17 @@
         function test_getAll()
         {
             //Arrange
-            $name = "Jim";
+            $employee = "Phil";
             $id = 1;
+            $test_get_employee = new Stylist($employee, $id);
+
+            $name = "Jim";
             $name2 = "Bob";
             $id2 = 2;
-            $test_client = new Client($name, $id);
+            $stylist_id = $test_get_employee->getId();
+            $test_client = new Client($name, $id, $stylist_id);
             $test_client->save();
-            $test_client2 = new Client($name2, $id2);
+            $test_client2 = new Client($name2, $id2, $stylist_id);
             $test_client2->save();
 
             //Act
@@ -83,14 +102,19 @@
         function test_deleteAll()
         {
             //Arrange
-            $name = "Bob";
+            $employee = "Phil";
             $id = 1;
-            $name2 = "Sally";
-            $id = 2;
-            $test_client = new Client($name, $id);
+            $test_get_employee = new Stylist($employee, $id);
+
+            $name = "Jim";
+            $name2 = "Bob";
+            $id2 = 2;
+            $stylist_id = $test_get_employee->getId();
+            $test_client = new Client($name, $id, $stylist_id);
             $test_client->save();
-            $test_client2 = new Client($name2, $id);
+            $test_client2 = new Client($name2, $id2, $stylist_id);
             $test_client2->save();
+
 
             //Act
             Client::deleteAll();
@@ -104,12 +128,16 @@
         {
             //Arrange
             $name = "Jojo";
+            $employee = "Phil";
             $id = 1;
+            $test_get_employee = new Stylist($employee, $id);
+
             $name2 = "Booboo";
-            $id = 2;
-            $test_client = new Client($name, $id);
+            $id2 = 2;
+            $stylist_id = $test_get_employee->getId();
+            $test_client = new Client($name, $id, $stylist_id);
             $test_client->save();
-            $test_client2 = new Client($name2, $id);
+            $test_client2 = new Client($name2, $id2, $stylist_id);
             $test_client2->save();
 
             //Act
