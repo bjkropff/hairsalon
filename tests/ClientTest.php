@@ -148,5 +148,27 @@
 
         }
 
+        function test_updateClient()
+        {
+            //Arrange
+            $name = "Jojo";
+            $employee = "Phil";
+            $id = 1;
+            $test_get_employee = new Stylist($employee, $id);
+
+            $stylist_id = $test_get_employee->getId();
+            $test_client = new Client($name, $id, $stylist_id);
+            $test_client->save();
+
+            $new_name = "Geegee";
+
+            //Act
+            $test_client->update($new_name);
+
+            //Assert
+            $this->assertEquals($test_client, $result);
+
+        }
+
     }
 ?>

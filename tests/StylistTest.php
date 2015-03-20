@@ -128,6 +128,39 @@
 
             $test_employee_id = $test_stylist->getId();
 
+            $name = "Dodo";
+            $test_client = new Client($name, $id, $stylist_id);
+            $test_client->save();
+
+            $name2 = "Dummy";
+            $test_client2 = new Client($name2, $id, $stylist_id);
+            $test_client2->save();
+
+            //Act
+            $result = $test_stylist->getClients();
+
+            //Assert
+            $this->assertEquals([$test_client, $test_client2], $result);
+
+
+        }
+
+        function test_updateStylist()
+        {
+            //Arrange
+            $employee = "Bob";
+            $id = 1;
+            $test_stylist = new Stylist($employee, $id);
+            $test_stylist->save();
+
+            $new_name = "Billy";
+
+            //Act
+            $test_stylist->update($new_name);
+
+            //Assert
+            $this->assertEquals($test_stylist, $result);
+
         }
     }//closes the StylistTest
 
