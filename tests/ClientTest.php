@@ -31,29 +31,49 @@
 
             //Assert
             $this->assertEquals($name, $result);
-        
         }
 
-        // function test_getId()
-        // {
-        //     //Arrange
-        //     $employee = "Phil";
-        //     $id = 1;
-        //     $test_get_employee = new Stylist($employee, $id);
-        //     $test_get_employee->save();
-        //
-        //     $name = "Jimmy";
-        //     $stylist_id = $test_get_employee->getId();
-        //     $test_client = new Client($name, $id, $stylist_id);
-        //     $test_client->save();
-        //
-        //
-        //     //Act
-        //     $result = $test_client->getId();
-        //
-        //     //Assert
-        //     $this->assertEquals(true, is_numeric($result));
-        // }
+        function test_setClient()
+        {
+            //Arrange
+            $name = "Jimmy";
+            $employee = "Phil";
+            $id = 1;
+            $stylist_id = 1;
+            $test_client = new Client($name, $id, $stylist_id);
+
+            //Act
+            $test_client->setName("Jojo");
+
+            $result = $test_client->getName();
+
+            //Assert
+            $this->assertEquals( "Jojo",$result);
+        }
+
+        function test_getId()
+        {
+            //Arrange
+            $employee = "Phil";
+            $id = 1;
+            $test_get_employee = new Stylist($employee, $id);
+            $test_get_employee->save();
+
+            $name = "Jimmy";
+            $stylist_id = $test_get_employee->getId();
+            $test_client = new Client($name, $id, $stylist_id);
+            $test_client->save();
+
+
+            //Act
+            $result = $test_client->getId();
+
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+
+    //    function test_setId()
+
         //
         // function test_saveId()
         // {

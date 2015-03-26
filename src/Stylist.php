@@ -86,11 +86,13 @@
             }
             return $gottenClients;
         }
+
         function update($new_employee)
         {
             $GLOBALS['DB']->exec("UPDATE stylist SET employee = '{$new_employee}' WHERE id = {$this->getId()}");
             $this->setEmployee($new_employee);
         }
+        
         function delete()
         {
             $GLOBALS['DB']->exec("DELETE FROM stylist WHERE id = {$this->getId()};");

@@ -32,6 +32,21 @@
 
         }
 
+        function test_setEmployee()
+        {
+            //Arragnge
+            $employee = "Bob";
+            $id = 1;
+            $test_set_employee = new Stylist($employee, $id);
+
+            //Act
+            $test_set_employee->setEmployee("Karen");
+            $result = $test_set_employee->getEmployee();
+
+            //Assert
+            $this->assertEquals( "Karen", $result);
+        }
+
         function test_getId()
         {
             //Arrange
@@ -42,6 +57,21 @@
             $result = $test_get_employee->getId();
             //Assert
             $this->assertEquals(1, $result);
+        }
+
+        function test_setId()
+        {
+            //Arrange
+            $employee = "Bob";
+            $id = 1;
+            $test_set_id = new Stylist($employee, $id);
+
+            //Act
+            $test_set_id->setId(2);
+            $result = $test_set_id->getId();
+
+            //Assert
+            $this->assertEquals(2, $result);
         }
 
         function test_save()
@@ -64,10 +94,11 @@
             //Arrange
             $employee = "Billy";
             $id = 1;
-            $employee2 = "Bob";
-            $id2 = 2;
             $test_get_employee = new Stylist($employee, $id);
             $test_get_employee->save();
+
+            $employee2 = "Bob";
+            $id2 = 2;
             $test_get_employee2 = new Stylist($employee2, $id2);
             $test_get_employee2->save();
 
@@ -147,11 +178,13 @@
         //     $test_employee_id = $test_stylist->getId();
         //
         //     $name = "Dodo";
+        //     $stylist_id = 1;
         //     $test_client = new Client($name, $id, $stylist_id);
         //     $test_client->save();
         //
         //     $name2 = "Dummy";
-        //     $test_client2 = new Client($name2, $id, $stylist_id);
+        //     $id2 = 2;
+        //     $test_client2 = new Client($name2, $id2, $stylist_id);
         //     $test_client2->save();
         //
         //     //Act
@@ -160,9 +193,8 @@
         //     //Assert
         //     $this->assertEquals([$test_client, $test_client2], $result);
         //
-        //
         // }
-        //
+
 
     }//closes the StylistTest
 
