@@ -118,6 +118,24 @@
             $this->assertEquals($test_stylist, $result);
         }
 
+        function test_updateStylist()
+        {
+            //Arrange
+            $employee = "Bob";
+            $id = 1;
+            $test_stylist = new Stylist($employee, $id);
+            $test_stylist->save();
+
+            $new_name = "Billy";
+
+            //Act
+            $test_stylist->update($new_name);
+
+            //Assert
+            $this->assertEquals($new_name, $test_stylist->getEmployee());
+
+        }
+
         // function test_getClient()
         // {
         //     //Arrange
@@ -145,23 +163,7 @@
         //
         // }
         //
-        // function test_updateStylist()
-        // {
-        //     //Arrange
-        //     $employee = "Bob";
-        //     $id = 1;
-        //     $test_stylist = new Stylist($employee, $id);
-        //     $test_stylist->save();
-        //
-        //     $new_name = "Billy";
-        //
-        //     //Act
-        //     $test_stylist->update($new_name);
-        //
-        //     //Assert
-        //     $this->assertEquals($test_stylist, $result);
-        //
-        // }
+
     }//closes the StylistTest
 
 ?>
