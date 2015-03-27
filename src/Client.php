@@ -88,6 +88,17 @@
 
         }
 
+        function update($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_name}' WHERE id = {$this->getId()}");
+            $this->setname($new_name);
+        }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
+        }
+
     }//closes class
 
 

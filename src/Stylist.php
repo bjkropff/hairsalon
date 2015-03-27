@@ -75,8 +75,8 @@
 
         function getClients()
         {
-            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
             $gottenClients = array();
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
             foreach($returned_clients as $client) {
                 $name = $client['name'];
                 $id = $client['id'];
@@ -92,11 +92,11 @@
             $GLOBALS['DB']->exec("UPDATE stylist SET employee = '{$new_employee}' WHERE id = {$this->getId()}");
             $this->setEmployee($new_employee);
         }
-        
+
         function delete()
         {
-            $GLOBALS['DB']->exec("DELETE FROM stylist WHERE id = {$this->getId()};");
-            $GLOBALS['DB']->exec("DELETE FROM client WHERE stylist_id = {$this->getId()}");
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()}");
         }
     }//closes the Stylist class
 

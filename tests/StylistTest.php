@@ -167,34 +167,52 @@
 
         }
 
-        // function test_getClient()
-        // {
-        //     //Arrange
-        //     $employee = "Bob";
-        //     $id = 1;
-        //     $test_stylist = new Stylist($employee, $id);
-        //     $test_stylist->save();
-        //
-        //     $test_employee_id = $test_stylist->getId();
-        //
-        //     $name = "Dodo";
-        //     $stylist_id = 1;
-        //     $test_client = new Client($name, $id, $stylist_id);
-        //     $test_client->save();
-        //
-        //     $name2 = "Dummy";
-        //     $id2 = 2;
-        //     $test_client2 = new Client($name2, $id2, $stylist_id);
-        //     $test_client2->save();
-        //
-        //     //Act
-        //     $result = $test_stylist->getClients();
-        //
-        //     //Assert
-        //     $this->assertEquals([$test_client, $test_client2], $result);
-        //
-        // }
+        function test_getClient()
+        {
+            //Arrange
+            $employee = "Bob";
+            $id = 1;
+            $test_stylist = new Stylist($employee, $id);
+            $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
 
+            $name = "Dodo";
+            $id = 1;
+            $test_client = new Client($name, $id, $stylist_id);
+            $test_client->save();
+
+            $name2 = "Dummy";
+            $id2 = 2;
+            $test_client2 = new Client($name2, $id2, $stylist_id);
+            $test_client2->save();
+
+            //Act
+            $result = $test_stylist->getClients();
+            //Assert
+            $this->assertEquals([$test_client, $test_client2], $result);
+
+        }
+
+        function test_delete()
+        {
+            //Arrange
+            $employee = "Bob";
+            $id = 1;
+            $test_stylist = new Stylist($employee, $id);
+            $test_stylist->save();
+
+            $employee2 = "Billy";
+            $id2 = 2;
+            $test_stylist2 = new Stylist($employee2, $id2);
+            $test_stylist2->save();
+
+            //Act
+            $test_stylist->delete();
+            
+            //Assert
+            $this->assertEquals([$test_stylist2], Stylist::getAll());
+
+        }
 
     }//closes the StylistTest
 
